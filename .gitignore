@@ -1,0 +1,7 @@
+*.user
+*.suo
+/ManagedSpy/bin
+/ManagedSpy/obj
+/ManagedSpyLib/Debug
+*.sdf
+*.opensdf
