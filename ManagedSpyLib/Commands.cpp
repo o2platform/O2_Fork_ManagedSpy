@@ -72,7 +72,8 @@ array<ControlProxy^>^ Desktop::GetTopLevelWindows() {
 	return winarr;
 }
 
-bool Desktop::IsManagedProcess(DWORD processID) {
+bool Desktop::IsManagedProcess(DWORD processID) 
+{
 	if (managedProcesses->Contains(processID))
 		return true;
 
@@ -84,20 +85,27 @@ bool Desktop::IsManagedProcess(DWORD processID) {
 		return false;
 	}
 
-	bool ismanaged = false;
-	for(int i = 0;i<proc->Modules->Count;i++) {
-		if(proc->Modules[i]->ModuleName == _T("mscorlib.dll") ||
-			proc->Modules[i]->ModuleName == _T("mscorlib.ni.dll")) {
-				//make sure its version 2.0
-				System::Reflection::AssemblyName^ name = System::Reflection::AssemblyName::GetAssemblyName(
-					proc->Modules[i]->FileName);
-				if (name != nullptr && name->Version->Major == 2) {
-					ismanaged = true;
-				}
-			break;
-		}
-	}
+    bool ismanaged = false;
+    try
+    {	
+	    for(int i = 0;i<proc->Modules->Count;i++) {
+		    if(proc->Modules[i]->ModuleName == _T("mscorlib.dll") ||
+			    proc->Modules[i]->ModuleName == _T("mscorlib.ni.dll")) {
+                    //dc
+				    //make sure its version 2.0
+			    //	System::Reflection::AssemblyName^ name = System::Reflection::AssemblyName::GetAssemblyName(
+				    //	proc->Modules[i]->FileName);
+		    //		if (name != nullptr && name->Version->Major == 2) {
+					    ismanaged = true;
+				    //}
+			    break;
+		    }
+	    }
+    }
+    catch(Exception^ ) 
+    {
 
+    }
 	if (ismanaged) {
 		managedProcesses->Add(processID);
 	}
@@ -364,7 +372,8 @@ void Desktop::OnMessage(int nCode, WPARAM wparam, LPARAM lparam) {
 				}
 			}
 		}
-		else if (msg->message == WM_UNSUBSCRIBEEVENT) {
+		else if (msg->message == WM_UNSUBSCRIBEEVENT) 
+        {
 			Control^ w = System::Windows::Forms::Control::FromHandle((System::IntPtr)msg->hwnd);
 			MemoryStore* store = MemoryStore::OpenStore(msg);
 			if (w != nullptr && store != NULL) {

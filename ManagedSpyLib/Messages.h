@@ -24,3 +24,7 @@ static unsigned int WM_EVENTFIRED =			::RegisterWindowMessage(L"MSFT_ManagedSpy_
 static unsigned int WM_WINDOWDESTROYED =	::RegisterWindowMessage(L"MSFT_ManagedSpy_WINDOWDESTROYED");
 //Spied sends: a control has changed its handle.
 static unsigned int WM_HANDLECHANGED =		::RegisterWindowMessage(L"MSFT_ManagedSpy_HANDLECHANGED");
+
+//extra O2 related messages
+
+static unsigned int WM_PING =		::RegisterWindowMessage(L"O2_ManagedSpy_PING");
