@@ -10,6 +10,8 @@ using System.Diagnostics;
 using Microsoft.ManagedSpy;
 using System.Threading;
 
+using O2.DotNetWrappers.ExtensionMethods;
+
 namespace ManagedSpy {
     /// <summary>
     /// This is the main window of ManagedSpy.
@@ -25,8 +27,13 @@ namespace ManagedSpy {
         private ControlProxy currentProxy = null;
         EventFilterDialog dialog = new EventFilterDialog();
 
-        public Form1() {
+        public Form1() 
+        {
             InitializeComponent();
+
+            //adding O2
+            this.add_ExtraMenuItems();
+            this.insert_Below_Script_Me(propertyGrid);    
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -172,7 +179,7 @@ namespace ManagedSpy {
                     currentProxy.EventFired += new ControlProxyEventHandler(ProxyEventFired);
                 }
             }
-        }
+        }   
 
         /// <summary>
         /// Stops event Logging
