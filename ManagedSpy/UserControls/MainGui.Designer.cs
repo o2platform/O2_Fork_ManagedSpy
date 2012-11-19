@@ -1,0 +1,449 @@
+﻿namespace ManagedSpy
+{
+    partial class MainGui
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGui));
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutManagedSpyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.ShowNative = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flashWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.propertiesPage = new System.Windows.Forms.TabPage();
+            this.eventsPage = new System.Windows.Forms.TabPage();
+            this.eventGrid = new System.Windows.Forms.DataGridView();
+            this.EventName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EventArgs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filterEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeWindow = new System.Windows.Forms.TreeView();
+            this.treeMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStrip1 = new ManagedSpy.ClickToolStrip();
+            this.tsbuttonFilterEvents = new System.Windows.Forms.ToolStripButton();
+            this.tsbuttonRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsButtonStartStop = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsButtonClear = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.propertiesPage.SuspendLayout();
+            this.eventsPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eventGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.treeMenuStrip.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutManagedSpyToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutManagedSpyToolStripMenuItem
+            // 
+            this.aboutManagedSpyToolStripMenuItem.Name = "aboutManagedSpyToolStripMenuItem";
+            this.aboutManagedSpyToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.aboutManagedSpyToolStripMenuItem.Text = "About ManagedSpy";
+            this.aboutManagedSpyToolStripMenuItem.Click += new System.EventHandler(this.aboutManagedSpyToolStripMenuItem_Click);
+            // 
+            // propertyGrid
+            // 
+            this.propertyGrid.BackColor = System.Drawing.Color.White;
+            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid.Location = new System.Drawing.Point(3, 3);
+            this.propertyGrid.Name = "propertyGrid";
+            this.propertyGrid.Size = new System.Drawing.Size(380, 343);
+            this.propertyGrid.TabIndex = 0;
+            this.propertyGrid.ToolbarVisible = false;
+            // 
+            // ShowNative
+            // 
+            this.ShowNative.CheckOnClick = true;
+            this.ShowNative.Name = "ShowNative";
+            this.ShowNative.Size = new System.Drawing.Size(180, 22);
+            this.ShowNative.Text = "Show Native Windows";
+            this.ShowNative.ToolTipText = "Show NonManaged Windows (choose Refresh after)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 430);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(723, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.ToolTipText = "Rescans active process and windows";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // flashWindow
+            // 
+            this.flashWindow.Name = "flashWindow";
+            this.flashWindow.Size = new System.Drawing.Size(180, 22);
+            this.flashWindow.Text = "Show Window";
+            this.flashWindow.ToolTipText = "Flashes the currently selected Control";
+            this.flashWindow.Click += new System.EventHandler(this.showWindowToolStripMenuItem_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.propertiesPage);
+            this.tabControl1.Controls.Add(this.eventsPage);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(394, 375);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // propertiesPage
+            // 
+            this.propertiesPage.Controls.Add(this.propertyGrid);
+            this.propertiesPage.Location = new System.Drawing.Point(4, 22);
+            this.propertiesPage.Name = "propertiesPage";
+            this.propertiesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.propertiesPage.Size = new System.Drawing.Size(386, 349);
+            this.propertiesPage.TabIndex = 0;
+            this.propertiesPage.Text = "Properties";
+            this.propertiesPage.UseVisualStyleBackColor = true;
+            // 
+            // eventsPage
+            // 
+            this.eventsPage.Controls.Add(this.eventGrid);
+            this.eventsPage.Location = new System.Drawing.Point(4, 22);
+            this.eventsPage.Name = "eventsPage";
+            this.eventsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.eventsPage.Size = new System.Drawing.Size(369, 114);
+            this.eventsPage.TabIndex = 1;
+            this.eventsPage.Text = "Events";
+            this.eventsPage.UseVisualStyleBackColor = true;
+            // 
+            // eventGrid
+            // 
+            this.eventGrid.AllowUserToAddRows = false;
+            this.eventGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.eventGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.eventGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
+            this.eventGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.eventGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EventName,
+            this.EventArgs});
+            this.eventGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eventGrid.Location = new System.Drawing.Point(3, 3);
+            this.eventGrid.Name = "eventGrid";
+            this.eventGrid.RowHeadersVisible = false;
+            this.eventGrid.RowTemplate.Height = 16;
+            this.eventGrid.Size = new System.Drawing.Size(363, 108);
+            this.eventGrid.TabIndex = 0;
+            // 
+            // EventName
+            // 
+            this.EventName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EventName.HeaderText = "Event Name";
+            this.EventName.Name = "EventName";
+            this.EventName.Width = 91;
+            // 
+            // EventArgs
+            // 
+            this.EventArgs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EventArgs.HeaderText = "Event Arguments";
+            this.EventArgs.Name = "EventArgs";
+            this.EventArgs.Width = 104;
+            // 
+            // filterEventsToolStripMenuItem
+            // 
+            this.filterEventsToolStripMenuItem.Name = "filterEventsToolStripMenuItem";
+            this.filterEventsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filterEventsToolStripMenuItem.Text = "Filter Events";
+            this.filterEventsToolStripMenuItem.ToolTipText = "Select which events to log";
+            this.filterEventsToolStripMenuItem.Click += new System.EventHandler(this.filterEventsToolStripMenuItem_Click);
+            // 
+            // showWindowToolStripMenuItem
+            // 
+            this.showWindowToolStripMenuItem.Name = "showWindowToolStripMenuItem";
+            this.showWindowToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.showWindowToolStripMenuItem.Text = "Show Window";
+            this.showWindowToolStripMenuItem.Click += new System.EventHandler(this.flashWindow_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(0, 52);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeWindow);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Size = new System.Drawing.Size(723, 375);
+            this.splitContainer1.SplitterDistance = 325;
+            this.splitContainer1.TabIndex = 3;
+            // 
+            // treeWindow
+            // 
+            this.treeWindow.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeWindow.ContextMenuStrip = this.treeMenuStrip;
+            this.treeWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeWindow.FullRowSelect = true;
+            this.treeWindow.HideSelection = false;
+            this.treeWindow.HotTracking = true;
+            this.treeWindow.Location = new System.Drawing.Point(0, 0);
+            this.treeWindow.Name = "treeWindow";
+            this.treeWindow.Size = new System.Drawing.Size(325, 375);
+            this.treeWindow.TabIndex = 0;
+            this.treeWindow.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeWindow_BeforeExpand);
+            this.treeWindow.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeWindow_AfterSelect);
+            // 
+            // treeMenuStrip
+            // 
+            this.treeMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showWindowToolStripMenuItem});
+            this.treeMenuStrip.Name = "contextMenuStrip1";
+            this.treeMenuStrip.Size = new System.Drawing.Size(142, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filterEventsToolStripMenuItem,
+            this.flashWindow,
+            this.toolStripSeparator1,
+            this.refreshToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.ShowNative});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(723, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbuttonFilterEvents,
+            this.tsbuttonRefresh,
+            this.toolStripSeparator2,
+            this.tsButtonStartStop,
+            this.toolStripSeparator3,
+            this.tsButtonClear});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(723, 25);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbuttonFilterEvents
+            // 
+            this.tsbuttonFilterEvents.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbuttonFilterEvents.Image = ((System.Drawing.Image)(resources.GetObject("tsbuttonFilterEvents.Image")));
+            this.tsbuttonFilterEvents.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbuttonFilterEvents.Name = "tsbuttonFilterEvents";
+            this.tsbuttonFilterEvents.Size = new System.Drawing.Size(23, 22);
+            this.tsbuttonFilterEvents.Text = "toolStripButton1";
+            this.tsbuttonFilterEvents.ToolTipText = "Select Events to Display";
+            this.tsbuttonFilterEvents.Click += new System.EventHandler(this.tsbuttonFilterEvents_Click);
+            // 
+            // tsbuttonRefresh
+            // 
+            this.tsbuttonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbuttonRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbuttonRefresh.Image")));
+            this.tsbuttonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbuttonRefresh.Name = "tsbuttonRefresh";
+            this.tsbuttonRefresh.Size = new System.Drawing.Size(23, 22);
+            this.tsbuttonRefresh.Text = "toolStripButton1";
+            this.tsbuttonRefresh.ToolTipText = "Refresh Windows";
+            this.tsbuttonRefresh.Click += new System.EventHandler(this.tsbuttonRefresh_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsButtonStartStop
+            // 
+            this.tsButtonStartStop.CheckOnClick = true;
+            this.tsButtonStartStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsButtonStartStop.Image = ((System.Drawing.Image)(resources.GetObject("tsButtonStartStop.Image")));
+            this.tsButtonStartStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsButtonStartStop.Name = "tsButtonStartStop";
+            this.tsButtonStartStop.Size = new System.Drawing.Size(23, 22);
+            this.tsButtonStartStop.Text = "toolStripButton1";
+            this.tsButtonStartStop.ToolTipText = "Start/Stop Event Logging";
+            this.tsButtonStartStop.Click += new System.EventHandler(this.tsButtonStartStop_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsButtonClear
+            // 
+            this.tsButtonClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsButtonClear.Image = ((System.Drawing.Image)(resources.GetObject("tsButtonClear.Image")));
+            this.tsButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsButtonClear.Name = "tsButtonClear";
+            this.tsButtonClear.Size = new System.Drawing.Size(23, 22);
+            this.tsButtonClear.Text = "toolStripButton1";
+            this.tsButtonClear.ToolTipText = "Clear Event Window";
+            this.tsButtonClear.Click += new System.EventHandler(this.tsButtonClear_Click);
+            // 
+            // MainGui
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.menuStrip1);
+            this.Name = "MainGui";
+            this.Size = new System.Drawing.Size(723, 452);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.propertiesPage.ResumeLayout(false);
+            this.eventsPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.eventGrid)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.treeMenuStrip.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        public System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem aboutManagedSpyToolStripMenuItem;
+        public System.Windows.Forms.PropertyGrid propertyGrid;
+        public System.Windows.Forms.ToolStripMenuItem ShowNative;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        public System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        public System.Windows.Forms.ToolStripButton tsButtonStartStop;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        public ClickToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStripButton tsbuttonFilterEvents;
+        public System.Windows.Forms.ToolStripButton tsbuttonRefresh;
+        public System.Windows.Forms.ToolStripButton tsButtonClear;
+        public System.Windows.Forms.ToolStripMenuItem flashWindow;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage propertiesPage;
+        public System.Windows.Forms.TabPage eventsPage;
+        public System.Windows.Forms.DataGridView eventGrid;
+        public System.Windows.Forms.DataGridViewTextBoxColumn EventName;
+        public System.Windows.Forms.DataGridViewTextBoxColumn EventArgs;
+        public System.Windows.Forms.ToolStripMenuItem filterEventsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem showWindowToolStripMenuItem;
+        public System.Windows.Forms.SplitContainer splitContainer1;
+        public System.Windows.Forms.TreeView treeWindow;
+        public System.Windows.Forms.ContextMenuStrip treeMenuStrip;
+        public System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+    }
+}
