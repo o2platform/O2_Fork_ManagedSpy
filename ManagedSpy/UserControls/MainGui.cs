@@ -13,6 +13,8 @@ using O2.DotNetWrappers.ExtensionMethods;
 
 namespace ManagedSpy
 {
+        using O2.XRules.Database.Utils;
+
     /// <summary>
             /// This is the main window of ManagedSpy.
         /// Its a fairly simple Form containing a TreeView and TabControl.
@@ -22,23 +24,33 @@ namespace ManagedSpy
         /// 
     public partial class MainGui : UserControl
     {
+        
         public ControlProxy currentProxy = null;
         EventFilterDialog dialog = new EventFilterDialog();
 
-        public MainGui()
-        {
-            InitializeComponent();
-            //adding O2
-            this.add_ExtraMenuItems();            
-            
-        }
+        public MainGui()  
+        {   
+            InitializeComponent(); 
+            //adding O2              
+            this.add_ExtraMenuItems();
 
-                public void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            var vsModules = (from frame in new StackTrace().GetFrames()
+                              let module = frame.GetMethod().Module
+                             where module.Name.contains("VisualStudio")
+                             select module.Name).distinct();
+            if (vsModules.notEmpty())
+            { 
+                var callbackFromVs = (Action<Type>)"onMainGuiCtor".o2Cache();
+                callbackFromVs(this.type());            
+            }
+        }  
+
+        public void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
 
         
-
+         
         public void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
             RefreshWindows();
         }
