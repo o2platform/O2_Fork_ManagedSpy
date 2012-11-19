@@ -26,23 +26,18 @@ namespace ManagedSpy
     {
         
         public ControlProxy currentProxy = null;
-        EventFilterDialog dialog = new EventFilterDialog();
+        public EventFilterDialog dialog = new EventFilterDialog();
 
         public MainGui()  
         {   
             InitializeComponent(); 
+            this.enableVisualStudioObjectCreation();
+
             //adding O2              
             this.add_ExtraMenuItems();
-
-            var vsModules = (from frame in new StackTrace().GetFrames()
-                              let module = frame.GetMethod().Module
-                             where module.Name.contains("VisualStudio")
-                             select module.Name).distinct();
-            if (vsModules.notEmpty())
-            { 
-                var callbackFromVs = (Action<Type>)"onMainGuiCtor".o2Cache();
-                callbackFromVs(this.type());            
-            }
+            this.add_EventsFilters();      
+      
+            this.RefreshWindows();
         }  
 
         public void exitToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -104,15 +99,17 @@ namespace ManagedSpy
             this.propertyGrid.SelectedObject = this.treeWindow.SelectedNode.Tag;
             this.toolStripStatusLabel1.Text = treeWindow.SelectedNode.Text;
             StopLogging();
-            this.eventGrid.Rows.Clear();
+            //this.eventGrid.Rows.Clear();
             StartLogging();
         }
 
         /// <summary>
         /// This is called when the selected ControlProxy raises an event
         /// </summary>
-        public void ProxyEventFired(object sender, ProxyEventArgs args) {
-            eventGrid.FirstDisplayedScrollingRowIndex = this.eventGrid.Rows.Add(new object[] { args.eventDescriptor.Name, args.eventArgs.ToString() });
+        public void ProxyEventFired(object sender, ProxyEventArgs args) 
+        {
+            eventGrid.FirstDisplayedScrollingRowIndex = 
+                this.eventGrid.Rows.Add(new object[] { args.eventDescriptor.Name, args.eventArgs.ToString() });
         }
 
         /// <summary>
@@ -174,31 +171,22 @@ namespace ManagedSpy
         /// Starts event logging
         /// </summary>
         public void StartLogging() {
-            if (tsButtonStartStop.Checked) {
+            if (tsButtonStartStop.Checked) 
+            {
                 currentProxy = propertyGrid.SelectedObject as ControlProxy;
-                if (currentProxy != null) {
-                    //unsubscribe from events.
-                    foreach (EventDescriptor ed in currentProxy.GetEvents()) {
-                        if (dialog.EventList[ed.Name].Display) {
-                            currentProxy.SubscribeEvent(ed);
-                        }
-                    }
-                    currentProxy.EventFired += new ControlProxyEventHandler(ProxyEventFired);
-                }
+                currentProxy.subscribeToEvents(dialog);                
+                currentProxy.EventFired += new ControlProxyEventHandler(ProxyEventFired);                
             }
         }   
 
         /// <summary>
         /// Stops event Logging
         /// </summary>
-        public void StopLogging() {
-            if (currentProxy != null) {
-                //unsubscribe from events.
-                foreach (EventDescriptor ed in currentProxy.GetEvents()) {
-                    currentProxy.UnsubscribeEvent(ed);
-                }
-                currentProxy.EventFired -= new ControlProxyEventHandler(ProxyEventFired);
-            }
+        public void StopLogging() 
+        {
+               currentProxy.unsubscribeAllEvents()
+                           .eventFired_Remove(new ControlProxyEventHandler(ProxyEventFired));
+            
         }
 
         public void tsButtonStartStop_Click(object sender, EventArgs e) {
@@ -218,7 +206,8 @@ namespace ManagedSpy
             RefreshWindows();
         }
 
-        public void tsButtonClear_Click(object sender, EventArgs e) {
+        public void tsButtonClear_Click(object sender, EventArgs e) 
+        {
             this.eventGrid.Rows.Clear();
         }
 

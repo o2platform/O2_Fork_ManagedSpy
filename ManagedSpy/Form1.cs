@@ -9,13 +9,12 @@ namespace ManagedSpy
         
         public Form1()
         {
-            InitializeComponent();        
-            mainGui1.insert_Below_Script_Me(mainGui1.propertyGrid);  
+            InitializeComponent();                    
         }
 
         public void Form1_Load(object sender, EventArgs e) 
         {
-            mainGui1.RefreshWindows();
+//            mainGui1.RefreshWindows();
         }
         public void Form1_FormClosing(object sender, FormClosingEventArgs e) 
         {
