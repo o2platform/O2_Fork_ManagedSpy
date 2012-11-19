@@ -24,7 +24,7 @@ namespace ManagedSpy {
         /// <summary>
         /// Currently selected proxy -- used for event logging.
         /// </summary>
-        private ControlProxy currentProxy = null;
+        public ControlProxy currentProxy = null;
         EventFilterDialog dialog = new EventFilterDialog();
 
         public Form1() 
@@ -36,22 +36,22 @@ namespace ManagedSpy {
             this.insert_Below_Script_Me(propertyGrid);    
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+        public void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        public void Form1_Load(object sender, EventArgs e) {
             RefreshWindows();
         }
 
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+        public void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
             RefreshWindows();
         }
 
         /// <summary>
         /// This rebuilds the window hierarchy
         /// </summary>
-        private void RefreshWindows() {
+        public void RefreshWindows() {
             this.treeWindow.BeginUpdate();
             this.treeWindow.Nodes.Clear();
             ControlProxy[] topWindows = Microsoft.ManagedSpy.ControlProxy.TopLevelWindows;
@@ -93,7 +93,7 @@ namespace ManagedSpy {
         /// <summary>
         /// Called when the user selects a control in the treeview
         /// </summary>
-        private void treeWindow_AfterSelect(object sender, TreeViewEventArgs e) {
+        public void treeWindow_AfterSelect(object sender, TreeViewEventArgs e) {
             this.propertyGrid.SelectedObject = this.treeWindow.SelectedNode.Tag;
             this.toolStripStatusLabel1.Text = treeWindow.SelectedNode.Text;
             StopLogging();
@@ -104,7 +104,7 @@ namespace ManagedSpy {
         /// <summary>
         /// This is called when the selected ControlProxy raises an event
         /// </summary>
-        private void ProxyEventFired(object sender, ProxyEventArgs args) {
+        public void ProxyEventFired(object sender, ProxyEventArgs args) {
             eventGrid.FirstDisplayedScrollingRowIndex = this.eventGrid.Rows.Add(new object[] { args.eventDescriptor.Name, args.eventArgs.ToString() });
         }
 
@@ -117,7 +117,7 @@ namespace ManagedSpy {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void treeWindow_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
+        public void treeWindow_BeforeExpand(object sender, TreeViewCancelEventArgs e) {
             foreach (TreeNode child in e.Node.Nodes) {
                 child.Nodes.Clear();
                 ControlProxy proxy = child.Tag as ControlProxy;
@@ -133,16 +133,16 @@ namespace ManagedSpy {
             }
         }
 
-        private void flashWindow_Click(object sender, EventArgs e) {
+        public void flashWindow_Click(object sender, EventArgs e) {
             FlashCurrentWindow();
         }
-        private void showWindowToolStripMenuItem_Click(object sender, EventArgs e) {
+        public void showWindowToolStripMenuItem_Click(object sender, EventArgs e) {
             FlashCurrentWindow();
         }
         /// <summary>
         /// This uses ControlPaint.DrawReversibleFrame to highlight the given window
         /// </summary>
-        private void FlashCurrentWindow() {
+        public void FlashCurrentWindow() {
             ControlProxy proxy = propertyGrid.SelectedObject as ControlProxy;
             if (proxy != null && proxy.IsManaged && proxy.GetValue("Location") != null) {
 
@@ -166,7 +166,7 @@ namespace ManagedSpy {
         /// <summary>
         /// Starts event logging
         /// </summary>
-        private void StartLogging() {
+        public void StartLogging() {
             if (tsButtonStartStop.Checked) {
                 currentProxy = propertyGrid.SelectedObject as ControlProxy;
                 if (currentProxy != null) {
@@ -184,7 +184,7 @@ namespace ManagedSpy {
         /// <summary>
         /// Stops event Logging
         /// </summary>
-        private void StopLogging() {
+        public void StopLogging() {
             if (currentProxy != null) {
                 //unsubscribe from events.
                 foreach (EventDescriptor ed in currentProxy.GetEvents()) {
@@ -194,7 +194,7 @@ namespace ManagedSpy {
             }
         }
 
-        private void tsButtonStartStop_Click(object sender, EventArgs e) {
+        public void tsButtonStartStop_Click(object sender, EventArgs e) {
             StopLogging();
             StartLogging();
             if (tsButtonStartStop.Checked) {
@@ -205,31 +205,31 @@ namespace ManagedSpy {
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
+        public void Form1_FormClosing(object sender, FormClosingEventArgs e) {
             StopLogging();
         }
 
-        private void tsbuttonRefresh_Click(object sender, EventArgs e) {
+        public void tsbuttonRefresh_Click(object sender, EventArgs e) {
             RefreshWindows();
         }
 
-        private void tsButtonClear_Click(object sender, EventArgs e) {
+        public void tsButtonClear_Click(object sender, EventArgs e) {
             this.eventGrid.Rows.Clear();
         }
 
-        private void tsbuttonFilterEvents_Click(object sender, EventArgs e) {
+        public void tsbuttonFilterEvents_Click(object sender, EventArgs e) {
             dialog.ShowDialog();
             StopLogging();
             StartLogging();
         }
 
-        private void filterEventsToolStripMenuItem_Click(object sender, EventArgs e) {
+        public void filterEventsToolStripMenuItem_Click(object sender, EventArgs e) {
             dialog.ShowDialog();
             StopLogging();
             StartLogging();
         }
 
-        private void aboutManagedSpyToolStripMenuItem_Click(object sender, EventArgs e) {
+        public void aboutManagedSpyToolStripMenuItem_Click(object sender, EventArgs e) {
             HelpAbout about = new HelpAbout();
             about.ShowDialog();
         }
@@ -239,7 +239,7 @@ namespace ManagedSpy {
     /// This is to ensure when you click on the toolstrip, our application doesn't have to be
     /// active for the click to register.
     /// </summary>
-    class ClickToolStrip : ToolStrip {
+    public class ClickToolStrip : ToolStrip {
         const int WM_MOUSEACTIVATE = 0x0021;
         const int MA_ACTIVATE = 0x0001;
 

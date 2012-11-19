@@ -3,7 +3,7 @@ namespace ManagedSpy {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -22,7 +22,7 @@ namespace ManagedSpy {
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        public void InitializeComponent() {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -95,8 +95,8 @@ namespace ManagedSpy {
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonOK;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button buttonOK;
     }
 }

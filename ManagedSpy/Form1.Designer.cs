@@ -3,7 +3,7 @@ namespace ManagedSpy {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -22,7 +22,7 @@ namespace ManagedSpy {
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        public void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -410,38 +410,38 @@ namespace ManagedSpy {
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeWindow;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem flashWindow;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage propertiesPage;
-        private System.Windows.Forms.PropertyGrid propertyGrid;
-        private System.Windows.Forms.TabPage eventsPage;
-        private System.Windows.Forms.ToolStripMenuItem filterEventsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutManagedSpyToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip treeMenuStrip;
-        private System.Windows.Forms.ToolStripButton tsbuttonRefresh;
-        private System.Windows.Forms.ToolStripButton tsbuttonFilterEvents;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsButtonStartStop;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem showWindowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton tsButtonClear;
-        private System.Windows.Forms.DataGridView eventGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EventName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EventArgs;
-        private ClickToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem ShowNative;
+        public System.Windows.Forms.SplitContainer splitContainer1;
+        public System.Windows.Forms.TreeView treeWindow;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem flashWindow;
+        public System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage propertiesPage;
+        public System.Windows.Forms.PropertyGrid propertyGrid;
+        public System.Windows.Forms.TabPage eventsPage;
+        public System.Windows.Forms.ToolStripMenuItem filterEventsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem aboutManagedSpyToolStripMenuItem;
+        public System.Windows.Forms.ContextMenuStrip treeMenuStrip;
+        public System.Windows.Forms.ToolStripButton tsbuttonRefresh;
+        public System.Windows.Forms.ToolStripButton tsbuttonFilterEvents;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripButton tsButtonStartStop;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        public System.Windows.Forms.ToolStripMenuItem showWindowToolStripMenuItem;
+        public System.Windows.Forms.ToolStripButton tsButtonClear;
+        public System.Windows.Forms.DataGridView eventGrid;
+        public System.Windows.Forms.DataGridViewTextBoxColumn EventName;
+        public System.Windows.Forms.DataGridViewTextBoxColumn EventArgs;
+        public ClickToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        public System.Windows.Forms.ToolStripMenuItem ShowNative;
     }
 }
 

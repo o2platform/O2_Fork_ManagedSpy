@@ -17,7 +17,7 @@ namespace ManagedSpy {
     public partial class EventFilterDialog : Form {
         EventFilterList eventlist = new EventFilterList();
 
-        internal EventFilterList EventList {
+        public EventFilterList EventList {
             get { return eventlist; }
             set { eventlist = value; }
         }
@@ -29,16 +29,16 @@ namespace ManagedSpy {
             this.dataGridView1.Columns[1].Width = 170;
         }
 
-        private void buttonOK_Click(object sender, EventArgs e) {
+        public void buttonOK_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e) {
+        public void dataGridView1_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Space) {
                 ToggleSelectedCells();
             }
         }
-        private void ToggleSelectedCells() {
+        public void ToggleSelectedCells() {
             if (dataGridView1.SelectedCells.Count > 0) {
                 bool newValue = !EventList[dataGridView1.SelectedCells[0].RowIndex].Display;
                 foreach (DataGridViewCell cell in dataGridView1.SelectedCells) {
@@ -49,12 +49,12 @@ namespace ManagedSpy {
             }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+        public void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             ToggleSelectedCells();
         }
     }
 
-    class EventFilterList : List<EventFilterLine> {
+    public class EventFilterList : List<EventFilterLine> {
         public EventFilterList() {
             EventDescriptorCollection edColl = TypeDescriptor.GetEvents(typeof(Control));
             edColl = edColl.Sort();
@@ -76,7 +76,7 @@ namespace ManagedSpy {
         }
     }
 
-    class EventFilterLine {
+    public class EventFilterLine {
         string eventName;
         bool isChecked;
 
