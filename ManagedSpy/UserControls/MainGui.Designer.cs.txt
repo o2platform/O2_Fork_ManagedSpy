@@ -108,6 +108,7 @@
             this.ShowNative.Size = new System.Drawing.Size(180, 22);
             this.ShowNative.Text = "Show Native Windows";
             this.ShowNative.ToolTipText = "Show NonManaged Windows (choose Refresh after)";
+            this.ShowNative.Click += new System.EventHandler(this.ShowNative_Click);
             // 
             // toolStripSeparator1
             // 
@@ -178,7 +179,7 @@
             this.eventsPage.Location = new System.Drawing.Point(4, 22);
             this.eventsPage.Name = "eventsPage";
             this.eventsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.eventsPage.Size = new System.Drawing.Size(369, 114);
+            this.eventsPage.Size = new System.Drawing.Size(386, 349);
             this.eventsPage.TabIndex = 1;
             this.eventsPage.Text = "Events";
             this.eventsPage.UseVisualStyleBackColor = true;
@@ -206,7 +207,7 @@
             this.EventName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EventName.HeaderText = "Event Name";
             this.EventName.Name = "EventName";
-            this.EventName.Width = 91;
+            this.EventName.Width = 84;
             // 
             // EventArgs
             // 
@@ -274,7 +275,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

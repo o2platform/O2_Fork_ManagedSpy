@@ -9,11 +9,13 @@ using System.Windows.Forms;
 using Microsoft.ManagedSpy;
 using System.Diagnostics;
 using System.Threading;
+using O2.Kernel;
 using O2.DotNetWrappers.ExtensionMethods;
 
 namespace ManagedSpy
 {
         using O2.XRules.Database.Utils;
+    using O2.DotNetWrappers.DotNet;
 
     /// <summary>
             /// This is the main window of ManagedSpy.
@@ -24,21 +26,113 @@ namespace ManagedSpy
         /// 
     public partial class MainGui : UserControl
     {
-        
+        public System.Windows.Forms.PropertyGrid propertyGrid;
+        public System.Windows.Forms.ToolStripMenuItem ShowNative;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public System.Windows.Forms.ToolStripButton tsButtonStartStop;
+        public ClickToolStrip toolStrip1;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.DataGridView eventGrid;
+        public System.Windows.Forms.TreeView treeWindow;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+
+        //Other objects
         public ControlProxy currentProxy = null;
         public EventFilterDialog dialog = new EventFilterDialog();
 
         public MainGui()  
-        {   
-            InitializeComponent(); 
-            this.enableVisualStudioObjectCreation();
-
-            //adding O2              
+        {               
+            //this.enableVisualStudioObjectCreation();            
+            
+            this.buildGui();
+                                    
             this.add_ExtraMenuItems();
             this.add_EventsFilters();      
       
-            this.RefreshWindows();
-        }  
+            //this.RefreshWindows();
+        }
+
+        public MainGui buildGui()
+        {             
+            this.createControls()
+                .createMenu()
+                .createToolStripMenu()
+                .wireEvents();
+
+            return this;
+        }
+
+        public MainGui createControls()
+        { 
+            this.width(800).height(500);
+            var panel                    = this.add_Panel().insert_LogViewer();
+            this.menuStrip1              = panel.insert_Above(25).add_Control<MenuStrip>();
+            this.toolStrip1              = panel.insert_Above(25).add_Control<ClickToolStrip>();
+            this.toolStripStatusLabel1   = panel.insert_Below(25).add_Control<StatusStrip>()
+                                                        .add_Control<ToolStripStatusLabel>();    
+            
+            this.tabControl1             = panel.add_TabControl();
+            this.treeWindow              = panel.insert_Left().add_TreeView();
+                
+            this.propertyGrid            = this.tabControl1.add_Tab("Properties").add_PropertyGrid();
+            this.eventGrid               = this.tabControl1.add_Tab("Events").add_DataGridView()
+                                                           .add_Columns("Event Name", "Event Args");
+            return this;
+        }
+
+        public MainGui createMenu()
+        {          
+            //original ManagedSpy menu   
+            var fileMenu = this.menuStrip1.add_MenuItem("File")
+                                          .add_MenuItem("Exit",                ()=>  this.exitToolStripMenuItem_Click(null,null));
+            var viewMenu = this.menuStrip1.add_MenuItem("View")
+                                          .add_MenuItem("Filter Events",       () => this.filterEventsToolStripMenuItem_Click(null, null))
+                                          .add_MenuItem("Show Window",         () => this.showWindowToolStripMenuItem_Click(null, null))
+                                          .add_MenuItem("Refresh",             () => this.refreshToolStripMenuItem_Click(null, null));
+
+            this.ShowNative = viewMenu    .add_MenuItem("Show Native Windows", () => { });
+            this.ShowNative.CheckOnClick = true;
+
+            var helpMenu = this.menuStrip1.add_MenuItem("Help")
+                                          .add_MenuItem("About ManagedSpy",    () => this.aboutManagedSpyToolStripMenuItem_Click(null, null));;  
+            
+            //Extra menu items
+            this.menuStrip1.add_MenuItem("Sample Apps")
+                           .add_MenuItem("Open Simple TextEditor",             () => MainGui_ExtensionMethods.TestFile1.startProcess());
+
+            this.menuStrip1.add_MenuItem("REPL")
+                           .add_MenuItem("REPL MainGui",                       () => this.script_Me())
+                           .add_MenuItem("Insert REPL in Gui",                 () => this.insert_Below_Script_Me(this.propertyGrid))
+                           .add_MenuItem("Log Viewer",                         () => open.logViewer());
+
+            return this;
+        }
+
+        public MainGui createToolStripMenu()
+        {                         
+                                        this.toolStrip1.add_Button("",  ManagedSpy_FormImages.tsbuttonFilterEvents_Image,  () => this.tsbuttonFilterEvents_Click(null,null) );
+                                        this.toolStrip1.add_Button("",  ManagedSpy_FormImages.tsbuttonRefresh_Image,       () => this.tsbuttonRefresh_Click     (null,null) );   
+            this.tsButtonStartStop    = this.toolStrip1.add_Button("",  ManagedSpy_FormImages.tsButtonStartStop_Image,     () => this.tsButtonStartStop_Click   (null,null) );   
+                                        this.toolStrip1.add_Button("",  ManagedSpy_FormImages.tsButtonClear_Image,         () => this.tsButtonClear_Click     (null,null) );   
+
+            this.tsButtonStartStop.CheckOnClick          = true;
+            this.tsButtonStartStop.DisplayStyle          = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsButtonStartStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+
+            this.menuStrip1.splitContainer().splitterWidth(1).fixedPanel1();
+            this.toolStrip1.splitContainer().splitterWidth(1).fixedPanel1();
+            this.toolStripStatusLabel1.GetCurrentParent().splitContainer().splitterWidth(1).fixedPanel1();                
+            return this;
+        }
+
+        public MainGui wireEvents()
+        { 
+            //treeView events
+            this.treeWindow.BeforeExpand    += new System.Windows.Forms.TreeViewCancelEventHandler (this.treeWindow_BeforeExpand);
+            this.treeWindow.AfterSelect     += new System.Windows.Forms.TreeViewEventHandler       (this.treeWindow_AfterSelect);
+            return this;
+        }
+
 
         public void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
@@ -53,12 +147,27 @@ namespace ManagedSpy
         /// <summary>
         /// This rebuilds the window hierarchy
         /// </summary>
-        public void RefreshWindows() {
+        
+        public void RefreshWindows() 
+        {
+            
+            "Getting TopLevelWindows".info();                       
+            ControlProxy[] topWindows = Microsoft.ManagedSpy.ControlProxy.TopLevelWindows;
+            "Got {0} TopLevelWindows".info(topWindows.size());
+            ShowWindows(topWindows);                        
+        }
+        
+        public void ShowWindows(ControlProxy[]  topWindows) 
+        {
             this.treeWindow.BeginUpdate();
             this.treeWindow.Nodes.Clear();
-            ControlProxy[] topWindows = Microsoft.ManagedSpy.ControlProxy.TopLevelWindows;
-            if (topWindows != null && topWindows.Length > 0) {
-                foreach (ControlProxy cproxy in topWindows) {
+                        
+            if (topWindows != null && topWindows.Length > 0) 
+            {
+                foreach (ControlProxy cproxy in topWindows) 
+                {
+                    "cproxy: {0}".info(cproxy.OwningProcess);
+             //       continue;
                     TreeNode procnode;
 
                     //only showing managed windows
@@ -226,6 +335,11 @@ namespace ManagedSpy
         public void aboutManagedSpyToolStripMenuItem_Click(object sender, EventArgs e) {
             HelpAbout about = new HelpAbout();
             about.ShowDialog();
+        }
+
+        private void ShowNative_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

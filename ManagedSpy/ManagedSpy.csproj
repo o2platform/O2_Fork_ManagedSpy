@@ -99,8 +99,10 @@
     <Compile Include="UserControls\MainGui.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MainGui.Designer.cs">
-      <DependentUpon>MainGui.cs</DependentUpon>
+    <Compile Include="UserControls\ManagedSpy_FormImages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManagedSpy_FormImages.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EventFilterDialog.resx">
       <SubType>Designer</SubType>
@@ -124,8 +126,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControls\MainGui.resx">
-      <DependentUpon>MainGui.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ManagedSpy_FormImages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManagedSpy_FormImages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ManagedSpy</CustomToolNamespace>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -166,6 +170,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\tsButtonClear.Image.png" />
+    <Content Include="Images\tsbuttonFilterEvents.Image.png" />
+    <Content Include="Images\tsbuttonRefresh.Image.png" />
+    <Content Include="Images\tsButtonStartStop.Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

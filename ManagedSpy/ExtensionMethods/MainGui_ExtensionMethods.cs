@@ -18,22 +18,6 @@ namespace ManagedSpy
         {
             TestFile1 = @"C:/_WorkDir/O2/O2 Install/_TempDir_v4.5.1.0/11_17_2012/Util - Simple Text Editor [18704]\Util - Simple Text Editor.exe";
         }
-
-        public static MainGui add_ExtraMenuItems(this MainGui mainGui)
-        {
-            var menuStrip = mainGui.control<MenuStrip>(true);
-
-            menuStrip.add_MenuItem("Sample Apps")
-                     .add_MenuItem("Open Simple TextEditor", () => TestFile1.startProcess());
-
-            menuStrip.add_MenuItem("REPL")
-                     .add_MenuItem("REPL MainGui", () => mainGui.script_Me())
-                     .add_MenuItem("Insert REPL in Gui", () => mainGui.insert_Below_Script_Me(mainGui.propertyGrid))
-                     .add_MenuItem("Log Viewer", () => open.logViewer());
-
-            return mainGui;
-        }
-
         public static MainGui enableVisualStudioObjectCreation(this MainGui mainGui)
         {
             var vsModules = (from frame in new StackTrace().GetFrames()
@@ -71,17 +55,20 @@ namespace ManagedSpy
                 Action<bool> setDisplayForAllEvents =
                     (value) =>
                     {
-                        dataGridView.Rows.forEach(
-                                (DataGridViewRow row) =>{       
-                                                            row.Cells[1].Value = value;
-                                                            mainGui.dialog.EventList[row.Cells[0].Value.str()].Display = value;
-                                                        });
-                        mainGui.resetEventsSubscriptions();
+                        dataGridView.invokeOnThread(
+                                ()=>{
+                                        dataGridView.Rows.forEach(
+                                                (DataGridViewRow row) =>{       
+                                                                            row.Cells[1].Value = value;
+                                                                            mainGui.dialog.EventList[row.Cells[0].Value.str()].Display = value;
+                                                                        });
+                                        mainGui.resetEventsSubscriptions();
+                                    });
                     };
 
                 dataGridView.add_ContextMenu()
-                            .add_MenuItem("DeSelect All", true, () => setDisplayForAllEvents(false))
-                            .add_MenuItem("Select All", () => setDisplayForAllEvents(true));
+                            .add_MenuItem("DeSelect All", true,  () => setDisplayForAllEvents(false))
+                            .add_MenuItem("Select All",          () => setDisplayForAllEvents(true));
 
                 dataGridView.onClick((row, cell) =>
                 {
