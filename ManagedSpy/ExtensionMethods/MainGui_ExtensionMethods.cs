@@ -7,6 +7,8 @@ using O2.DotNetWrappers.ExtensionMethods;
 using System.Diagnostics;
 using O2.Kernel;
 using Microsoft.ManagedSpy;
+using O2.DotNetWrappers.Windows;
+using System.Drawing;
 
 namespace ManagedSpy
 {
@@ -15,22 +17,70 @@ namespace ManagedSpy
         public static string TestFile1 { get; set; }
 
         static MainGui_ExtensionMethods()
-        {
+        {  
             TestFile1 = @"C:/_WorkDir/O2/O2 Install/_TempDir_v4.5.1.0/11_17_2012/Util - Simple Text Editor [18704]\Util - Simple Text Editor.exe";
         }
         public static MainGui enableVisualStudioObjectCreation(this MainGui mainGui)
-        {
+        { 
             var vsModules = (from frame in new StackTrace().GetFrames()
-                             let module = frame.GetMethod().Module
-                             where module.Name.contains("VisualStudio")
+                             let module = frame.GetMethod().Module 
+                             where module.Name.contains("O2_FluentSharp_CoreLib")
                              select module.Name).distinct();
-            if (vsModules.notEmpty())
-            {
+            //show.info(vsModules);     
+            if (vsModules.empty()) 
+            { 
                 var callbackFromVs = (Action<Type>)"onMainGuiCtor".o2Cache();
                 callbackFromVs.invoke(mainGui.type());
             }
             return mainGui;
         }
+        
+        public static MainGui add_TargetProcesses(this MainGui mainGui)
+        {                         
+            var currentProcessId = Process.GetCurrentProcess().Id;
+            var processes = Process.GetProcesses()
+                                   .Where((process)=>process.Id != currentProcessId)
+                                   .Where((process)=> process.MainWindowHandle != IntPtr.Zero);
+                                   //.Where((process)=> process.processHasModule("mscorlib"));
+
+            mainGui.treeWindow.clear();
+            var dotNetProcesses = mainGui.treeWindow.add_Node(".Net Processes");
+            var otherProcesses  = mainGui.treeWindow.add_Node("Other Processes");
+            var accessDenied    = mainGui.treeWindow.add_Node("Access Denied");
+                
+            foreach (var process in processes)
+            { 
+            //    if processHasModule(process,"mscorlib")
+                var text = "{0}             id: {1}".format(process.ProcessName, process.Id);                                                    
+
+                var targetNode = process.doWeHaveAccess()
+                                    ?   process.processHasModule("mscorlib") 
+                                            ? dotNetProcesses
+                                            : otherProcesses
+                                    :   accessDenied;
+
+               targetNode.add_Node(text, process)
+                         .showVisualClueWhenProcessIsHooked(process);                
+            }
+            
+            dotNetProcesses.expand()
+                           .nodes().first().selected();
+            
+            return mainGui;
+        }
+
+        public static TreeNode showVisualClueWhenProcessIsHooked(this TreeNode treeNode, Process process)
+        { 
+            if (process.doWeHaveAccess() && process.processHasModule("ManagedSpyLib.dll"))
+            {
+                treeNode.set_Text(treeNode.get_Text() + "   [Hooked]");                
+                treeNode.color(Color.DarkGreen);
+            }
+            else
+                treeNode.color(Color.DarkRed);
+          return treeNode;  
+        }
+
 
         public static ControlProxy currentProxy(this MainGui mainGui)
         {

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<H2>
+  <SourceCode>var visualStudio = new VisualStudio_2010();  
+
+var o2Refs = visualStudio.project("ManagedSpy")
+			    .folder().pathCombine("_O2_Refs").createDir();
+ 
+visualStudio .vsProject("ManagedSpy").remove_Reference("API_HawkEye")
+					   				 .remove_Reference("API_WinAPI");
+					   				//.wait(1000);
+
+visualStudio.vsProject("ManagedSpy").add_Compiled_O2Script_as_Reference("API_HawkEye.cs")
+					  				.add_Compiled_O2Script_as_Reference("API_WinAPI.cs", "_O2_Dlls");
+
+return visualStudio.vsProject("ManagedSpy")
+		     .references().names();
+		     
+//O2File:VisualStudio_2010_ExtensionMethods_ExtraMethods.cs		     
+//O2Ref:VSLangProj.dll</SourceCode>
+  <ReferencedAssemblies />
+</H2>

@@ -12,13 +12,14 @@ namespace ManagedSpy
             InitializeComponent();                    
         }
 
-        public void Form1_Load(object sender, EventArgs e) 
+        public void Form1_Load(object sender, EventArgs e)  
         {
+            mainGui1.buildGui();
 //            mainGui1.RefreshWindows();
         }
         public void Form1_FormClosing(object sender, FormClosingEventArgs e) 
         {
-            mainGui1.StopLogging();
+            //mainGui1.StopLogging();
         }
     }
 }
