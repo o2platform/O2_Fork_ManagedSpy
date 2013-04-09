@@ -57,14 +57,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>_O2_Dlls\API_WinAPI.dll</HintPath>
     </Reference>
-    <Reference Include="O2_FluentSharp_BCL">
-      <HintPath>..\packages\FluentSharp.BCL.4.4.2.0\lib\net35\O2_FluentSharp_BCL.dll</HintPath>
+    <Reference Include="FluentSharp.BCL">
+      <HintPath>..\packages\FluentSharp.BCL.5.0.80\lib\net35\FluentSharp.BCL.dll</HintPath>
     </Reference>
-    <Reference Include="O2_FluentSharp_CoreLib">
-      <HintPath>..\packages\FluentSharp.CoreLib.4.4.2.0\lib\net35\O2_FluentSharp_CoreLib.dll</HintPath>
+    <Reference Include="FluentSharp.CoreLib">
+      <HintPath>..\packages\FluentSharp.CoreLib.5.0.80\lib\net35\FluentSharp.CoreLib.dll</HintPath>
     </Reference>
-    <Reference Include="O2_FluentSharp_REPL">
-      <HintPath>..\packages\FluentSharp.REPL.4.4.3.0\lib\net35\O2_FluentSharp_REPL.exe</HintPath>
+    <Reference Include="FluentSharp.REPL">
+      <HintPath>..\packages\FluentSharp.REPL.5.0.80\lib\net35\FluentSharp.REPL.exe</HintPath>
+    </Reference>
+    <Reference Include="O2_Platform_External_SharpDevelop">
+      <HintPath>..\packages\O2.Platform.External.SharpDevelop.5.0.80\lib\net35\O2_Platform_External_SharpDevelop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -182,6 +185,9 @@
     <Content Include="Images\tsbuttonFilterEvents.Image.png" />
     <Content Include="Images\tsbuttonRefresh.Image.png" />
     <Content Include="Images\tsButtonStartStop.Image.png" />
+    <Content Include="Util - Simple Text Editor.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

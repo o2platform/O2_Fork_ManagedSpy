@@ -18,7 +18,7 @@ namespace ManagedSpy
 
         static MainGui_ExtensionMethods()
         {  
-            TestFile1 = @"C:/_WorkDir/O2/O2 Install/_TempDir_v4.5.1.0/11_17_2012/Util - Simple Text Editor [18704]\Util - Simple Text Editor.exe";
+            TestFile1 = @"Util - Simple Text Editor.exe".local();
         }
         public static MainGui enableVisualStudioObjectCreation(this MainGui mainGui)
         { 

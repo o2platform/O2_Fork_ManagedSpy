@@ -47,6 +47,8 @@ namespace ManagedSpy
         {       
         	try
         	{
+                this.insert_LogViewer();
+
 	            this.createControls() 
 	                .createMainMenu()
 	                .createToolStripMenu()
@@ -67,8 +69,7 @@ namespace ManagedSpy
         public MainGui createControls()
         { 
             this.width(800).height(500);            
-            var panel                    = this.add_Panel();
-                                               //.insert_LogViewer();
+            var panel                    = this.add_Panel();                                               
             this.menuStrip1              = panel.insert_Above(25).add_Control<MenuStrip>();
             this.toolStrip1              = panel.insert_Above(25).add_Control<ClickToolStrip>();
             this.toolStripStatusLabel1   = panel.insert_Below(25).add_Control<StatusStrip>()
